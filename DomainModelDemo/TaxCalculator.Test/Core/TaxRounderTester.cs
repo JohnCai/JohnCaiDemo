@@ -1,7 +1,7 @@
 using NUnit.Framework;
 using TaxCalculator.Core;
 
-namespace TaxCalculator.Test.Data
+namespace TaxCalculator.Test.Core
 {
     [TestFixture]
     public class TaxRounderTester

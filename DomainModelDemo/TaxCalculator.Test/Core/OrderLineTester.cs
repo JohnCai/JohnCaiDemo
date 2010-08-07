@@ -2,13 +2,14 @@ using System;
 using System.Collections.Generic;
 using NUnit.Framework;
 using TaxCalculator.Core;
+using Moq;
 
 namespace TaxCalculator.Test.Core
 {
     [TestFixture]
     public class OrderLineTester
     {
-        private Product _stubProduct;
+        private IProduct _stubProduct;
 
         [SetUp]
         public void SetUp()
@@ -52,21 +53,25 @@ namespace TaxCalculator.Test.Core
         [Test]
         public void Can_Get_AfterTax_Amount_Correctly()
         {
-            //_stubProduct
-            var orderLine = new OrderLine(_stubProduct);
+            var mockProduct1 = new Mock<IProduct>();
+            mockProduct1.Setup(x => x.GetAfterTaxPrice()).Returns(12.99m);
+            var orderLine = new OrderLine(mockProduct1.Object, 10);
 
+            decimal totalAmount = orderLine.GetAfterTaxAmount();
+
+            Assert.AreEqual(129.90m, totalAmount);
         }
     }
 
     public class OrderLine
     {
-        public OrderLine(Product product) : this(product, 1)
+        public OrderLine(IProduct product) : this(product, 1)
         {}
 
-        public OrderLine(Product product, int quantity): this(product, quantity, Product.DefaultUnit)
+        public OrderLine(IProduct product, int quantity): this(product, quantity, Product.DefaultUnit)
         {}
 
-        private OrderLine(Product product, int quantity, Unit unit)
+        private OrderLine(IProduct product, int quantity, Unit unit)
         {
             if (product == null)
                 throw new ArgumentNullException("product", "The Product can not be null!");
@@ -78,8 +83,13 @@ namespace TaxCalculator.Test.Core
 
         public Unit ItemUnit { get; private set; }
 
-        public Product Item { get; private set; }
+        public IProduct Item { get; private set; }
 
         public int Quantity { get; private set; }
+
+        public decimal GetAfterTaxAmount()
+        {
+            return Item.GetAfterTaxPrice()*Quantity;
+        }
     }
 }

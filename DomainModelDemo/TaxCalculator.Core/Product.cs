@@ -4,10 +4,12 @@ using Mavis.Core;
 
 namespace TaxCalculator.Core
 {
-    public class Product: Entity
+    public class Product: Entity, IProduct
     {
         public static readonly Unit DefaultUnit = new Unit("default");
         public string Name { get; set; }
+
+        public ITaxPriceService TaxPriceService { get; set; }
 
         public BasicDutyType BasicDutyType { get; set; }
 
@@ -44,6 +46,16 @@ namespace TaxCalculator.Core
         public void AddUnit(Unit unit)
         {
             Units.Add(unit);
+        }
+
+        public decimal GetAfterTaxPrice()
+        {
+            return TaxPriceService.CalculateAfterTaxPrice(this);
+        }
+
+        public decimal GetTax()
+        {
+            return TaxPriceService.CalculateTax(this);
         }
     }
 }

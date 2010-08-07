@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using Moq;
 using NUnit.Framework;
 using System;
 using TaxCalculator.Core;
@@ -75,6 +76,30 @@ namespace TaxCalculator.Test.Core
 
             Assert.AreEqual(2, product.Units.Count);
             Assert.AreSame(unit, product.Units[1]);
+        }
+
+        [Test]
+        public void Can_Get_AfterTaxPrice()
+        {
+            var service = new Mock<ITaxPriceService>();
+            var product = new Product("a") {TaxPriceService = service.Object};
+            service.Setup(x => x.CalculateAfterTaxPrice(product)).Returns(10.99m);
+
+            var price = product.GetAfterTaxPrice();
+
+            Assert.AreEqual(10.99m, price);
+        }
+
+        [Test]
+        public void Can_Get_Tax()
+        {
+            var service = new Mock<ITaxPriceService>();
+            var product = new Product("a") { TaxPriceService = service.Object };
+            service.Setup(x => x.CalculateTax(product)).Returns(1.90m);
+
+            var price = product.GetTax();
+
+            Assert.AreEqual(1.90m, price);
         }
     }
 }

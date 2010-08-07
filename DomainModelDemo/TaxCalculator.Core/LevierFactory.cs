@@ -2,7 +2,7 @@ namespace TaxCalculator.Core
 {
     public class LevierFactory
     {
-        public Levier GenerateLevier(Product product)
+        public Levier GenerateLevier(IProduct product)
         {
             var levier = new Levier {BeforeTaxAmount = product.Price};
 

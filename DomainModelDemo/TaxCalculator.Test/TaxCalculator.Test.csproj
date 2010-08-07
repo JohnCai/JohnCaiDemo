@@ -60,7 +60,7 @@
     <Compile Include="Core\ProductTester.cs" />
     <Compile Include="Core\BasicTaxTypeTester.cs" />
     <Compile Include="Core\UnitTester.cs" />
-    <Compile Include="Data\TaxRounderTester.cs" />
+    <Compile Include="Core\TaxRounderTester.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -76,6 +76,9 @@
       <Project>{5F6A73D2-7E33-4A04-9FA0-5159F07F333D}</Project>
       <Name>TaxCalculator.Data</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Data\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
