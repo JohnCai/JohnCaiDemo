@@ -53,6 +53,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\LevierFactoryTester.cs" />
+    <Compile Include="Core\LevierTester.cs" />
     <Compile Include="Core\OrderLineTester.cs" />
     <Compile Include="Core\TaxCalculatorTester.cs" />
     <Compile Include="Core\ProductTester.cs" />

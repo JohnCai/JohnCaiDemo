@@ -1,5 +1,5 @@
 using NUnit.Framework;
-using TaxCalculator.Data;
+using TaxCalculator.Core;
 
 namespace TaxCalculator.Test.Data
 {

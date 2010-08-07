@@ -40,5 +40,10 @@ namespace TaxCalculator.Core
                 return string.Format("Imported {0}", Name);
             return Name;
         }
+
+        public void AddUnit(Unit unit)
+        {
+            Units.Add(unit);
+        }
     }
 }

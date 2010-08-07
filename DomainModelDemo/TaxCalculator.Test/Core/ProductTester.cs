@@ -64,5 +64,17 @@ namespace TaxCalculator.Test.Core
             Assert.AreEqual(1, product.Units.Count);
             Assert.AreSame(Product.DefaultUnit, product.Units[0]);
         }
+
+        [Test]
+        public void Can_Add_Unit()
+        {
+            var product = new Product("book a");
+
+            var unit = new Unit("bag");
+            product.AddUnit(unit);
+
+            Assert.AreEqual(2, product.Units.Count);
+            Assert.AreSame(unit, product.Units[1]);
+        }
     }
 }

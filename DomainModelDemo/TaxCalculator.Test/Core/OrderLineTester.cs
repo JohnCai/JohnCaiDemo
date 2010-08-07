@@ -8,6 +8,15 @@ namespace TaxCalculator.Test.Core
     [TestFixture]
     public class OrderLineTester
     {
+        private Product _stubProduct;
+
+        [SetUp]
+        public void SetUp()
+        {
+            _stubProduct = new Product("book A");
+
+        }
+
         [Test]
         public void Product_Can_Not_Be_Null()
         {
@@ -17,7 +26,7 @@ namespace TaxCalculator.Test.Core
         [Test]
         public void Quantity_Should_Be_One_If_Not_Specified()
         {
-            var orderLine = new OrderLine(new Product("book A"));
+            var orderLine = new OrderLine(_stubProduct);
 
             Assert.AreEqual(1, orderLine.Quantity);
         }
@@ -25,19 +34,27 @@ namespace TaxCalculator.Test.Core
         [Test]
         public void Unit_Should_Be_DefaultUnit_If_Not_Specified()
         {
-            var stubProduct = new Product("book A");
-            var orderLine1 = new OrderLine(stubProduct);
-            var orderLine2 = new OrderLine(stubProduct, 2);
+            var orderLine1 = new OrderLine(_stubProduct);
+            var orderLine2 = new OrderLine(_stubProduct, 2);
 
-            Assert.AreSame(stubProduct.Units[0], orderLine1.ItemUnit);
-            Assert.AreSame(stubProduct.Units[0], orderLine2.ItemUnit);
+            Assert.AreSame(_stubProduct.Units[0], orderLine1.ItemUnit);
+            Assert.AreSame(_stubProduct.Units[0], orderLine2.ItemUnit);
         }
 
+        [Ignore]
         [Test]
         public void Unit_Should_Be_One_Of_The_Units_Of_Product()
         {
             var product = new Product("book A");
-            //product
+            product.AddUnit(new Unit("bag"));
+        }
+
+        [Test]
+        public void Can_Get_AfterTax_Amount_Correctly()
+        {
+            //_stubProduct
+            var orderLine = new OrderLine(_stubProduct);
+
         }
     }
 

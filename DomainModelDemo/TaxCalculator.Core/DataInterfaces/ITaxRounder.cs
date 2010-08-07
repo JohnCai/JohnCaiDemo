@@ -1,4 +1,6 @@
-﻿namespace TaxCalculator.Core.DataInterfaces
+﻿using System;
+
+namespace TaxCalculator.Core.DataInterfaces
 {
     public interface ITaxRounder
     {
