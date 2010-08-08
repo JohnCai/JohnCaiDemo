@@ -2,14 +2,14 @@ namespace TaxCalculator.Core
 {
     public class LevierFactory
     {
-        public Levier GenerateLevier(IProduct product)
+        public Levier GenerateLevier(ISaleItem saleItem)
         {
-            var levier = new Levier {BeforeTaxAmount = product.Price};
+            var levier = new Levier {BeforeTaxAmount = saleItem.Price};
 
-            if(product.BasicDutyType != null)
-                levier.AddTaxCalculater(new TaxCalculater(product.BasicDutyType.TaxRate, new TaxRounder()));
+            if(saleItem.BasicDutyType != null)
+                levier.AddTaxCalculater(new TaxCalculater(saleItem.BasicDutyType.TaxRate, new TaxRounder()));
 
-            if (product.IsImported)
+            if (saleItem.IsImported)
                 levier.AddTaxCalculater(new CommonsTaxCalculater(new TaxRounder()));
 
             return levier;

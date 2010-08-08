@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Mavis.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\Mavis\Mavis.Core.dll</HintPath>
+    </Reference>
     <Reference Include="Moq, Version=3.1.416.3, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Lib\ThirdParty\Moq.dll</HintPath>
@@ -56,6 +60,8 @@
     <Compile Include="Core\LevierFactoryTester.cs" />
     <Compile Include="Core\LevierTester.cs" />
     <Compile Include="Core\OrderLineTester.cs" />
+    <Compile Include="Core\SaleItemTester.cs" />
+    <Compile Include="Core\SalesOrderTester.cs" />
     <Compile Include="Core\TaxCalculatorTester.cs" />
     <Compile Include="Core\ProductTester.cs" />
     <Compile Include="Core\BasicTaxTypeTester.cs" />
@@ -64,10 +70,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Mavis.Core\Mavis.Core.csproj">
-      <Project>{69239884-EC53-4E19-B8CC-049EA4C08E84}</Project>
-      <Name>Mavis.Core</Name>
-    </ProjectReference>
     <ProjectReference Include="..\TaxCalculator.Core\TaxCalculator.Core.csproj">
       <Project>{D8AE0B3F-8B0D-4C1D-88E4-A76D1D370868}</Project>
       <Name>TaxCalculator.Core</Name>

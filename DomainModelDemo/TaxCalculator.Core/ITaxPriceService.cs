@@ -2,8 +2,8 @@ namespace TaxCalculator.Core
 {
     public interface ITaxPriceService
     {
-        decimal CalculateAfterTaxPrice(IProduct product);
+        decimal CalculateAfterTaxPrice(ISaleItem saleItem);
 
-        decimal CalculateTax(IProduct product);
+        decimal CalculateTax(ISaleItem saleItem);
     }
 }

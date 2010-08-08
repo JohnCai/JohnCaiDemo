@@ -4,15 +4,15 @@ namespace TaxCalculator.Core
 {
     public class TaxPriceService : ITaxPriceService
     {
-        public decimal CalculateAfterTaxPrice(IProduct product)
+        public decimal CalculateAfterTaxPrice(ISaleItem saleItem)
         {
-            var levier = new LevierFactory().GenerateLevier(product);
-            return levier.Tax() + product.Price;
+            var levier = new LevierFactory().GenerateLevier(saleItem);
+            return levier.Tax() + saleItem.Price;
         }
 
-        public decimal CalculateTax(IProduct product)
+        public decimal CalculateTax(ISaleItem saleItem)
         {
-            var levier = new LevierFactory().GenerateLevier(product);
+            var levier = new LevierFactory().GenerateLevier(saleItem);
             return levier.Tax();
         }
     }

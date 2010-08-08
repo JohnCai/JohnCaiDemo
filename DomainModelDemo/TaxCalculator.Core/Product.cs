@@ -4,18 +4,10 @@ using Mavis.Core;
 
 namespace TaxCalculator.Core
 {
-    public class Product: Entity, IProduct
+    public class Product: Entity
     {
         public static readonly Unit DefaultUnit = new Unit("default");
         public string Name { get; set; }
-
-        public ITaxPriceService TaxPriceService { get; set; }
-
-        public BasicDutyType BasicDutyType { get; set; }
-
-        public bool IsImported { get; set; }
-
-        public decimal Price { get; set; }
 
         public IList<Unit> Units { get; private set; }
 
@@ -26,21 +18,6 @@ namespace TaxCalculator.Core
             Name = name;
 
             Units = new List<Unit> {DefaultUnit};
-
-            AddSimpleBusinessRule();
-        }
-
-        private void AddSimpleBusinessRule()
-        {
-            AddRule(new SimpleRule("BasicDutyType", "The BasicDutyType should not be null!", () => BasicDutyType == null));
-            AddRule(new SimpleRule("Price", "The Price should not be negative!", () => Price < 0));
-        }
-
-        public string GetPrintingDesc()
-        {
-            if (IsImported)
-                return string.Format("Imported {0}", Name);
-            return Name;
         }
 
         public void AddUnit(Unit unit)
@@ -48,14 +25,5 @@ namespace TaxCalculator.Core
             Units.Add(unit);
         }
 
-        public decimal GetAfterTaxPrice()
-        {
-            return TaxPriceService.CalculateAfterTaxPrice(this);
-        }
-
-        public decimal GetTax()
-        {
-            return TaxPriceService.CalculateTax(this);
-        }
     }
 }

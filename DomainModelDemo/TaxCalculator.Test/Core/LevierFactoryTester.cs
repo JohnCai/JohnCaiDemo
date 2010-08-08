@@ -12,12 +12,12 @@ namespace TaxCalculator.Test.Core
         [Test]
         public void Can_Generate_Levier_For_NonImported_Product()
         {
-            var product = new Product("a")
+            var saleItem = new SaleItem(new Product("a"))
                               {
                                   BasicDutyType = new BasicDutyType("Books"){TaxRate = 0.1},
                                   IsImported = false
                               };
-            var levier = new LevierFactory().GenerateLevier(product);
+            var levier = new LevierFactory().GenerateLevier(saleItem);
             
             Assert.AreEqual(1, levier.TaxCalculaters.Count);
         }
@@ -25,12 +25,12 @@ namespace TaxCalculator.Test.Core
         [Test]
         public void Can_Generate_Levier_For_Imported_Product()
         {
-            var product = new Product("a")
-            {
-                BasicDutyType = new BasicDutyType("Books") { TaxRate = 0.1 },
-                IsImported = true
-            };
-            var levier = new LevierFactory().GenerateLevier(product);
+            var saleItem = new SaleItem(new Product("a"))
+                               {
+                                   BasicDutyType = new BasicDutyType("Books") {TaxRate = 0.1},
+                                   IsImported = true
+                               };
+            var levier = new LevierFactory().GenerateLevier(saleItem);
 
             Assert.AreEqual(2, levier.TaxCalculaters.Count);
         }
@@ -38,12 +38,12 @@ namespace TaxCalculator.Test.Core
         [Test]
         public void Can_Generate_Levier_For_Product_Without_BasicDutyType()
         {
-            var product = new Product("a")
-            {
-                BasicDutyType = null,
-                IsImported = false
-            };
-            var levier = new LevierFactory().GenerateLevier(product);
+            var saleItem = new SaleItem(new Product("a"))
+                               {
+                                   BasicDutyType = null,
+                                   IsImported = false
+                               };
+            var levier = new LevierFactory().GenerateLevier(saleItem);
 
             Assert.AreEqual(0, levier.TaxCalculaters.Count);
         }
@@ -51,11 +51,11 @@ namespace TaxCalculator.Test.Core
         [Test]
         public void Can_Generate_Levier_With_BeforeTaxPrice()
         {
-            var product = new Product("a")
-            {
-                Price = 19.99m,
-            };
-            var levier = new LevierFactory().GenerateLevier(product);
+            var saleItem = new SaleItem(new Product("a"))
+                               {
+                                   Price = 19.99m,
+                               };
+            var levier = new LevierFactory().GenerateLevier(saleItem);
 
             Assert.AreEqual(19.99m, levier.BeforeTaxAmount);
         }

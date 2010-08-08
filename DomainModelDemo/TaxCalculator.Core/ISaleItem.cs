@@ -2,12 +2,14 @@ using System.Collections.Generic;
 
 namespace TaxCalculator.Core
 {
-    public interface IProduct
+    public interface ISaleItem
     {
         BasicDutyType BasicDutyType { get; set; }
         bool IsImported { get; set; }
         decimal Price { get; set; }
-        IList<Unit> Units { get; }
+        Unit Unit { get; }
+
+        Product Product { get; }
 
         decimal GetAfterTaxPrice();
         decimal GetTax();

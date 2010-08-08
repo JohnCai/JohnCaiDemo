@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Mavis.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\Mavis\Mavis.Core.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -46,11 +50,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommonsTaxCalculater.cs" />
-    <Compile Include="IProduct.cs" />
+    <Compile Include="ISaleItem.cs" />
     <Compile Include="ITaxCalculater.cs" />
     <Compile Include="ITaxPriceService.cs" />
     <Compile Include="Levier.cs" />
     <Compile Include="LevierFactory.cs" />
+    <Compile Include="OrderLine.cs" />
+    <Compile Include="SaleItem.cs" />
+    <Compile Include="SalesOrder.cs" />
     <Compile Include="TaxCalculater.cs" />
     <Compile Include="DataInterfaces\IBasicDutyTypeRepository.cs" />
     <Compile Include="DataInterfaces\ITaxRounder.cs" />
@@ -60,12 +67,6 @@
     <Compile Include="TaxPriceService.cs" />
     <Compile Include="TaxRounder.cs" />
     <Compile Include="Unit.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Mavis.Core\Mavis.Core.csproj">
-      <Project>{69239884-EC53-4E19-B8CC-049EA4C08E84}</Project>
-      <Name>Mavis.Core</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
