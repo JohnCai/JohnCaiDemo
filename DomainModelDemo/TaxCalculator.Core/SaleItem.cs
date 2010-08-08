@@ -21,7 +21,17 @@ namespace TaxCalculator.Core
 
         public Product Product { get; set; }
 
-        public ITaxPriceService TaxPriceService { get; set; }
+        private ITaxPriceService _taxPriceService;
+        public ITaxPriceService TaxPriceService
+        {
+            get
+            {
+                if (_taxPriceService == null)
+                    _taxPriceService = new TaxPriceService();
+                return _taxPriceService;
+            }
+            set { _taxPriceService = value; }
+        }
 
 
         public BasicDutyType BasicDutyType { get; set; }

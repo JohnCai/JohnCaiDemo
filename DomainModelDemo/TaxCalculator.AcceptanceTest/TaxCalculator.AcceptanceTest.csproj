@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{076C552E-1A2F-4150-9ED9-D4F9888327C8}</ProjectGuid>
+    <ProjectGuid>{A120E58B-B44D-45E2-885F-74BB0DB22F3A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TaxCalculator.Test</RootNamespace>
-    <AssemblyName>TaxCalculator.Test</AssemblyName>
+    <RootNamespace>TaxCalculator.AcceptanceTest</RootNamespace>
+    <AssemblyName>TaxCalculator.AcceptanceTest</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -35,10 +35,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Lib\Mavis\Mavis.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Moq, Version=3.1.416.3, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Lib\ThirdParty\Moq.dll</HintPath>
-    </Reference>
     <Reference Include="nunit.framework, Version=2.5.0.9122, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Lib\ThirdParty\nunit.framework.dll</HintPath>
@@ -57,17 +53,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Core\LevierFactoryTester.cs" />
-    <Compile Include="Core\LevierTester.cs" />
-    <Compile Include="Core\OrderLineTester.cs" />
-    <Compile Include="Core\SaleItemTester.cs" />
-    <Compile Include="Core\SalesOrderTester.cs" />
-    <Compile Include="Core\TaxCalculatorTester.cs" />
-    <Compile Include="Core\ProductTester.cs" />
-    <Compile Include="Core\BasicTaxTypeTester.cs" />
-    <Compile Include="Core\UnitTester.cs" />
-    <Compile Include="Core\TaxRounderTester.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestCase.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TaxCalculator.Core\TaxCalculator.Core.csproj">

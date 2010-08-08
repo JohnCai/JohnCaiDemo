@@ -50,9 +50,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommonsTaxCalculater.cs" />
-    <Compile Include="ISaleItem.cs" />
-    <Compile Include="ITaxCalculater.cs" />
-    <Compile Include="ITaxPriceService.cs" />
+    <Compile Include="DataInterfaces\ISaleItem.cs" />
+    <Compile Include="DataInterfaces\ITaxCalculater.cs" />
+    <Compile Include="DataInterfaces\ITaxPriceService.cs" />
     <Compile Include="Levier.cs" />
     <Compile Include="LevierFactory.cs" />
     <Compile Include="OrderLine.cs" />
